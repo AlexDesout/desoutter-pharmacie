@@ -2,7 +2,7 @@
 
 ## Présentation
 
-Cette application web est une gestion simple de médicaments avec fonctionnalités de CRUD (Créer, Lire, Mettre à jour, Supprimer). Elle permet aussi la recherche, l'affichage d'un graphique de répartition des médicaments, et l'export PDF de la liste. L'application est développée avec Vue, utilise Bootstrap pour le style et Chart.js pour les graphiques.
+[Cette application web](http://desoutter.alwaysdata.net/) est une gestion simple de médicaments avec fonctionnalités de CRUD (Créer, Lire, Mettre à jour, Supprimer). Elle permet aussi la recherche, l'affichage d'un graphique de répartition des médicaments, et l'export PDF de la liste. L'application est développée avec Vue, utilise Bootstrap pour le style et Chart.js pour les graphiques.
 
 ---
 
