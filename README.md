@@ -34,7 +34,7 @@ Cette application web est une gestion simple de médicaments avec fonctionnalit�
 
 ### Recherche
 
-- La recherche est insensible à la casse et filtre par dénomination
+- La recherche filtre par dénomination
 
 ### Graphique
 
