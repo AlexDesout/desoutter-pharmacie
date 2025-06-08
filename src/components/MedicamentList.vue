@@ -45,11 +45,19 @@ async function livraisonMed(med) {
 
 async function dispensationMed(med) {
     try {
+        if (med.qte === 0) {
+            alert("Impossible d'avoir une quantité inférieure à 0.");
+            return;
+        }
         med.dispenser();
         const { id, denomination, formepharmaceutique, qte } = med;
-        await editMedicament({ id, denomination, formepharmaceutique, qte }); //éviter d'écraser l'image actuelle
-    } catch (e) { med.livrer(); console.error(e); }
+        await editMedicament({ id, denomination, formepharmaceutique, qte }); // éviter d'écraser l'image actuelle
+    } catch (e) {
+        med.livrer();
+        console.error(e);
+    }
 }
+
 
 function exportPDF() {
     const doc = new jsPDF()

@@ -80,7 +80,7 @@ async function submitForm() {
     <form class="d-flex flex-column" @submit.prevent="submitForm">
         <input v-model="medicament.denomination" class="form-control mb-3" placeholder="Dénomination" />
         <input v-model="medicament.formepharmaceutique" class="form-control mb-3" placeholder="Forme pharmaceutique" />
-        <input v-model.number="medicament.qte" type="number" class="form-control mb-3" placeholder="Quantité" />
+        <input v-model.number="medicament.qte" type="number" class="form-control mb-3" placeholder="Quantité" min="0"/>
         <input id="photo" @change="handleFileUpload" type="file" class="form-control mb-3" />
 
         <button class="btn btn-primary btn-sm" type="submit">
