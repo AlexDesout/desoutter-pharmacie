@@ -17,7 +17,7 @@ const medicament = reactive({
     qte: 0
 });
 
-const modifiedImage = ref(false);
+const isImageModified = ref(false);
 
 onMounted(async () => {
     if (mode === 'edit' && id) {
@@ -45,7 +45,7 @@ const handleFileUpload = (event) => {
     const reader = new FileReader();
     reader.onload = () => {
         medicament.photo = reader.result
-        modifiedImage.value = true;
+        isImageModified.value = true;
     };
     reader.readAsDataURL(file);
 };
@@ -57,7 +57,7 @@ async function submitForm() {
 
         } else {
             const dataToSend = { ...medicament };
-            if (!modifiedImage.value) delete dataToSend.photo; // ne pas écraser l'image côté serveur si l'on ne la touche pas
+            if (!isImageModified.value) delete dataToSend.photo; // ne pas écraser l'image côté serveur si l'on ne la touche pas
 
             await editMedicament(dataToSend);
         }

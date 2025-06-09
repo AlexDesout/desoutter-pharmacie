@@ -2,6 +2,7 @@
 import { ref, computed, onMounted } from 'vue';
 import { getMedicaments, deleteMedicament, editMedicament } from '../utils/api';
 import { jsPDF } from 'jspdf'
+import SearchBar from './SearchBar.vue';
 import MedicamentItem from './MedicamentItem.vue';
 import MedicamentChart from './MedicamentChart.vue';
 
@@ -35,25 +36,25 @@ async function deleteMed(id) {
     } catch (e) { console.error(e); }
 }
 
-async function livraisonMed(med) {
+async function deliverMed(med) {
     try {
-        med.livrer();
+        med.deliver();
         const { id, denomination, formepharmaceutique, qte } = med;
         await editMedicament({ id, denomination, formepharmaceutique, qte }); //éviter d'écraser l'image actuelle
     } catch (e) { med.dispenser(); console.error(e); }
 }
 
-async function dispensationMed(med) {
+async function dispenseMed(med) {
     try {
         if (med.qte === 0) {
             alert("Impossible d'avoir une quantité inférieure à 0.");
             return;
         }
-        med.dispenser();
+        med.dispense();
         const { id, denomination, formepharmaceutique, qte } = med;
         await editMedicament({ id, denomination, formepharmaceutique, qte }); // éviter d'écraser l'image actuelle
     } catch (e) {
-        med.livrer();
+        med.deliver();
         console.error(e);
     }
 }
@@ -74,7 +75,7 @@ function exportPDF() {
 <template>
     <h2>Quoi de neuf docteur ?</h2>
     <br>
-    <input v-model="searchTerm" type="search" placeholder="Rechercher un médicament" class="form-control mb-3" />
+    <SearchBar v-model="searchTerm" />
     <div class="d-flex">
         <router-link to="/ajouter" class="btn btn-primary btn-sm mb-3">
             Ajouter un médicament
@@ -90,7 +91,7 @@ function exportPDF() {
     <div v-else-if="error">{{ error }}</div>
     <div v-else class="d-flex flex-wrap justify-content-between">
         <MedicamentItem v-for="medicament in filteredMedicaments" :key="medicament.id" :medicament="medicament"
-            @supprimer="deleteMed" @livrer="livraisonMed" @dispenser="dispensationMed" />
+            @delete="deleteMed" @deliver="deliverMed" @dispense="dispenseMed" />
     </div>
     <MedicamentChart v-if="displayChart" :medicaments="filteredMedicaments" />
 </template>

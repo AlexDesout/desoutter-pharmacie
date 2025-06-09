@@ -58,8 +58,6 @@ export async function editMedicament(medicament) {
 }
 
 export async function addMedicament(medicament) {
-  console.log(medicament);
-
   const response = await fetch(baseRoute, {
     method: "POST",
     headers: {

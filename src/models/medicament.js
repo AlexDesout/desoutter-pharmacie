@@ -27,11 +27,11 @@ export default class Medicament {
     return this._qte;
   }
 
-  livrer() {
+  deliver() {
     this._qte ++;
   }
 
-  dispenser() {
+  dispense() {
     this._qte --;
   }
 }

@@ -68,3 +68,9 @@
 - Le mode recherche met à jour la liste en temps réel
 - Le graphique est dynamique et basé sur les données affichées
 - L’export PDF inclut la liste filtrée avec plusieurs lignes de texte 
+
+---
+
+## Graphe de l'application
+
+![Graphe de l'application](src/assets/graphe.png)

@@ -10,7 +10,7 @@ defineProps({
   }
 })
 
-const emit = defineEmits(['livrer', 'supprimer']);
+const emit = defineEmits(['delete','deliver', 'dispense']);
 </script>
 
 <template>
@@ -32,9 +32,9 @@ const emit = defineEmits(['livrer', 'supprimer']);
             <router-link :to="`/modifier/${medicament.id}`" class="btn btn-outline-success">
               Modifier
             </router-link>
-            <button class="btn btn-outline-primary" @click="emit('livrer', medicament)">+1</button>
-            <button class="btn btn-outline-primary" @click="emit('dispenser', medicament)">-1</button>
-            <button class="btn btn-outline-danger" @click="emit('supprimer', medicament.id)">
+            <button class="btn btn-outline-primary" @click="emit('deliver', medicament)">+1</button>
+            <button class="btn btn-outline-primary" @click="emit('dispense', medicament)">-1</button>
+            <button class="btn btn-outline-danger" @click="emit('delete', medicament.id)">
               Supprimer
             </button>
           </div>
